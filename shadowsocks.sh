@@ -740,8 +740,8 @@ install_mbedtls() {
     if [ ! -f /usr/lib/libmbedtls.a ]; then
         cd ${cur_dir}
         download "${mbedtls_file}.tar.gz" "${mbedtls_url}"
-        tar zxf mbedtls-${mbedtls_file}.tar.gz
-        cd mbedtls-${mbedtls_file}
+        tar zxf ${mbedtls_file}.tar.gz
+        cd ${mbedtls_file}
         make SHARED=1 CFLAGS=-fPIC
         make DESTDIR=/usr install
         if [ $? -ne 0 ]; then
