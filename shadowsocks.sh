@@ -33,8 +33,8 @@ software=(Shadowsocks-libev ShadowsocksR)
 libsodium_file="libsodium-1.0.18"
 libsodium_url="https://github.com/jedisct1/libsodium/releases/download/1.0.18-RELEASE/libsodium-1.0.18.tar.gz"
 
-mbedtls_file="v2.23.0" # // <-- changed file name
-mbedtls_url="https://github.com/ARMmbed/mbedtls/archive/'"$mbedtls_file"'.tar.gz"
+mbedtls_file="2.23.0" # // <-- changed file name
+mbedtls_url="https://github.com/ARMmbed/mbedtls/archive/v2.23.0.tar.gz"
 
 shadowsocks_libev_init="/etc/init.d/shadowsocks-libev"
 shadowsocks_libev_config="/etc/shadowsocks-libev/config.json"
@@ -739,13 +739,13 @@ install_libsodium() {
 install_mbedtls() {
     if [ ! -f /usr/lib/libmbedtls.a ]; then
         cd ${cur_dir}
-        download "mbedtls-${mbedtls_file}.tar.gz" "${mbedtls_url}"
+        download "${mbedtls_file}.tar.gz" "${mbedtls_url}"
         tar zxf mbedtls-${mbedtls_file}.tar.gz
         cd mbedtls-${mbedtls_file}
         make SHARED=1 CFLAGS=-fPIC
         make DESTDIR=/usr install
         if [ $? -ne 0 ]; then
-            echo -e "[${red}Error${plain}] ${mbedtls_file} install failed."
+            echo -e "[${red}Error${plain}] ${mbedtls_file} install failed. #"
             install_cleanup
             exit 1
         fi
