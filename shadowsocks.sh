@@ -741,7 +741,7 @@ install_mbedtls() {
         cd ${cur_dir}
         download "${mbedtls_file}.tar.gz" "${mbedtls_url}"
         tar zxf mbedtls-${mbedtls_file}.tar.gz
-        cd mbedtls-${mbedtls_file}
+        cd ${mbedtls_file}
         make SHARED=1 CFLAGS=-fPIC
         make DESTDIR=/usr install
         if [ $? -ne 0 ]; then
@@ -903,7 +903,7 @@ install_main() {
 install_cleanup() {
     cd ${cur_dir}
     rm -rf ${libsodium_file} ${libsodium_file}.tar.gz
-    rm -rf mbedtls-${mbedtls_file} mbedtls-${mbedtls_file}.tar.gz
+    rm -rf ${mbedtls_file} ${mbedtls_file}.tar.gz
     rm -rf ${shadowsocks_libev_file} ${shadowsocks_libev_file}.tar.gz
     rm -rf ${shadowsocks_r_file} ${shadowsocks_r_file}.tar.gz
     rm -rf $v2ray_file
