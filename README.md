@@ -5,7 +5,7 @@
 
 ## How to install server:
 ``` bash
-wget --no-check-certificate https://raw.githubusercontent.com/Yuk1n0/Shadowsocks-Install/master/shadowsocks.sh
+wget --no-check-certificate https://raw.githubusercontent.com/suspex0/Shadowsocks-Install/master/shadowsocks.sh
 chmod +x shadowsocks.sh
 ./shadowsocks.sh 2>&1 | tee shadowsocks.log
 ```
